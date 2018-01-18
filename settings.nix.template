@@ -11,7 +11,6 @@
   timezone = "Europe/Brussels";
   
   msfocb = {
-
     hashedPassword = "$6$fdEP2xGs$2qw.bg8Mb5ohQvIl3UAbr65Mi9C.m4qXs9R.Vc7TqZVemxt3AfF5oQNNZZwbyYd/MrVd2UMGjW4jQAcYFvgLJ/";
 
     # Public keys for SSH acces, separated by a space or newline
@@ -19,7 +18,6 @@
     authorized_keyfiles = [
       "./keys/xxxx"
     ];
-  
   };
   
   reverse_tunnel_forward_port = "6xxx";
