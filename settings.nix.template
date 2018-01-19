@@ -16,7 +16,7 @@
     # Public keys for SSH acces, separated by a space or newline
     authorized_keys = [];
     authorized_keyfiles = [
-      "./keys/xxxx"
+      ./keys/xxxx
     ];
   };
   
