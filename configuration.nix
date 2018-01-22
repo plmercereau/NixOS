@@ -46,7 +46,7 @@
     lsof
     psmisc
     rsync
-    git (import ./vim-config.nix)
+    git
     acl
     mkpasswd
     unzip
