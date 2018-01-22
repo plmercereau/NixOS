@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ./reverse-tunnel.nix
+    ./vim-config.nix
   ];
 
   hostname = "";
