@@ -24,7 +24,7 @@ set ruler
 set number
 
 if version >= 700
-  set sursorline
+  set cursorline
 endif
 
 set laststatus=2
