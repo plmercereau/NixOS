@@ -12,28 +12,14 @@
 
 {
 
-  environment.systemPackages = with pkgs; [
-    git
-    docker
-    docker_compose
-  ]; 
-
-  boot.kernel.sysctl = {
-    "vm.overcommit_memory" = 1;
-    "net.core.somaxconn" = 65535;
-  };
-
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = true;
+  imports = [
+    ./docker.nix
+  ];
 
   users.extraUsers.bahmni = {
     isSystemUser = true;
     createHome = true;
     home = "/home/bahmni";
-    extraGroups = [ "docker" ];
-  };
-
-  users.extraUsers.msfocb = {
     extraGroups = [ "docker" ];
   };
 
@@ -53,5 +39,6 @@
       ExecStop = "${pkgs.docker_compose}/bin/docker-compose down";
     };
   };
+
 }
 

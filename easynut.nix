@@ -12,28 +12,14 @@
 
 {
 
-  environment.systemPackages = with pkgs; [
-    git
-    docker
-    docker_compose
-  ]; 
-
-  boot.kernel.sysctl = {
-    "vm.overcommit_memory" = 1;
-    "net.core.somaxconn" = 65535;
-  };
-
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = true;
+  imports = [
+    ./docker.nix
+  ];
 
   users.extraUsers.easynut = {
     isSystemUser = true;
     createHome = true;
     home = "/home/easynut";
-    extraGroups = [ "docker" ];
-  };
-
-  users.extraUsers.msfocb = {
     extraGroups = [ "docker" ];
   };
 
