@@ -15,8 +15,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.systemPackages = [
-    (pkgs.vim_configurable.customize {
+  environment.systemPackages = with pkgs; [
+    (vim_configurable.customize {
 
       name = "vim";
 

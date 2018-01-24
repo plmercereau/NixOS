@@ -38,7 +38,6 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
-    vim
     tmux
     coreutils
     file
