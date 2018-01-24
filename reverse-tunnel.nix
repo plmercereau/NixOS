@@ -17,7 +17,7 @@
   ];
   
   users.extraUsers.tunnel = {
-    isNormalUser = false;
+    isSystemUser = true;
     createHome = true;
     home = "/var/tunnel";
   };
