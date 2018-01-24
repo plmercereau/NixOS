@@ -8,67 +8,60 @@
 #                                                                      #
 ########################################################################
 
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+with import <nixpkgs> {};
 
-{ config, lib, pkgs, ... }:
+vim_configurable.customize {
 
-{
-  environment.systemPackages = with pkgs; [
-    (vim_configurable.customize {
+  name = "vim";
 
-      name = "vim";
+  vimrcConfig.customRC = ''
+    set nocompatible
+    set modeline
+    set backspace=2
+    set showmode
+    set autoindent
+    filetype on
+    filetype plugin on
+    filetype indent on
+    if has("autocmd")
+      au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal! g`\"" | endif
+    endif
 
-      vimrcConfig.customRC = ''
-set nocompatible
-set modeline
-set backspace=2
-set showmode
-set autoindent
-filetype on
-filetype plugin on
-filetype indent on
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g`\"" | endif
-endif
+    set encoding=utf-8
+    set termencoding=utf-8
 
-set encoding=utf-8
-set termencoding=utf-8
+    if has('syntax')
+      syntax on
+    endif
 
-if has('syntax')
-  syntax on
-endif
+    colorscheme desert
 
-colorscheme desert
+    set ruler
+    set number
 
-set ruler
-set number
+    if version >= 700
+      set cursorline
+    endif
 
-if version >= 700
-  set cursorline
-endif
+    set laststatus=2
+    set statusline=%-3.3n\ %f%(\ %r%)%(\ %#WarningMsg#%m%0*%)%=(%l/%L,\ %c)\ %P\ [%{&encoding}:%{&fileformat}]%(\ %w%)\ %y\
 
-set laststatus=2
-set statusline=%-3.3n\ %f%(\ %r%)%(\ %#WarningMsg#%m%0*%)%=(%l/%L,\ %c)\ %P\ [%{&encoding}:%{&fileformat}]%(\ %w%)\ %y\
+    set shortmess+=axr
 
-set shortmess+=axr
+    set showmatch
 
-set showmatch
+    set tabstop=4
+    set shiftwidth=4
+    set softtabstop=4
+    set expandtab
+    set wrapmargin=0
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set wrapmargin=0
+    set nohlsearch
+    set ignorecase
+    set smartcase
+    set incsearch
+  '';
 
-set nohlsearch
-set ignorecase
-set smartcase
-set incsearch
-      '';
-    })
-  ];
 }
 
