@@ -27,9 +27,10 @@
   virtualisation.docker.enableOnBoot = true;
 
   users.extraUsers.easynut = {
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "docker" ];
-    hashedPassword = "$6$K4cr02qp0n7Nx2FN$SPLUgkWO13rlW516M55cb0IMPX3kuHI7vd/loVo8qoY/1uy027xSygQPvmF15f0tfULL6xfFNpSh3Q40Op1kj/";
+    isSystemUser = true;
+    createHome = true;
+    home = "/home/easynut";
+    extraGroups = [ "docker" ];
   };
 
   users.extraUsers.msfocb = {
