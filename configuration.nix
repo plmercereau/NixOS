@@ -119,6 +119,17 @@
   services.openssh = {
     enable = true;
     permitRootLogin = "no";
+    forwardX11 = false;
+    passwordAuthentication = false;
+    challengeResponseAuthentication = false;
+    extraConfig = ''
+      TCPKeepAlive yes
+      ClientAliveInterval 20
+      ClientAliveCountMax 3
+      UseDNS no
+      # NixOS builds SSH without Kerberos support for now.
+      #GSSAPIAuthentication no
+    '';
   };
 
   # Open ports in the firewall.
