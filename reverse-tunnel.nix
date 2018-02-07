@@ -15,7 +15,9 @@
     autossh
     procps
   ];
-  
+
+  # ssh-keygen -t ecdsa -b 521 -N "" -C "$(whoami)@${HOSTNAME}" -f id_${HOME}/${HOSTNAME}
+
   users.extraUsers.tunnel = {
     isSystemUser = true;
     createHome = true;
