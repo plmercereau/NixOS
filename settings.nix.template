@@ -6,10 +6,12 @@
   ];
 
   hostname = "";
-  
+ 
+  networkmanager.enable = true;
+ 
   # Timezone of the location where the server will be deployed
   timezone = "Europe/Brussels";
-  
+ 
   msfocb = {
     # python2 -c 'import crypt, getpass,os,base64; print crypt.crypt(getpass.getpass(), "$6$"+base64.b64encode(os.urandom(16))+"$")'
     hashedPassword = "$6$fdEP2xGs$2qw.bg8Mb5ohQvIl3UAbr65Mi9C.m4qXs9R.Vc7TqZVemxt3AfF5oQNNZZwbyYd/MrVd2UMGjW4jQAcYFvgLJ/";
@@ -20,7 +22,7 @@
       ./keys/xxxx
     ];
   };
-  
+ 
   reverse_tunnel_forward_port = "6xxx";
   reverse_tunnel_host = "fictappmonitoring.msf.org";
 

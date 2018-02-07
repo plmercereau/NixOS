@@ -19,7 +19,7 @@
 
   networking = {
     hostName = (import ./settings.nix).hostname;
-    networkmanager.enable = true;
+    networkmanager.enable = (import ./settings.nix).networkmanager.enable;
     wireless.enable = false;  # Enables wireless support via wpa_supplicant.
   };
   
