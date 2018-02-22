@@ -12,6 +12,16 @@
 
 {
 
+  # Python is not at /usr/bin/python in NixOS
+  nixpkgs.config.packageOverrides = super: {
+    ansible = super.ansible.overrideAttrs (o: {
+      prePatch = ''
+        sed -i "s,/usr/,$out," lib/ansible/constants.py && \
+        find lib/ansible/ -type f -exec sed -i "s,/usr/bin/python,/usr/bin/env python," {} \;
+      '';
+    });
+  };
+
   environment.systemPackages = with pkgs; [
     ansible
     rsync
