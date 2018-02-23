@@ -10,6 +10,22 @@
 
 { config, lib, pkgs, ... }:
 
+
+#let
+#  pkgsUnstable = import (
+#    fetchTarball https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz
+#  ) {};
+
+#in
+
+#{
+
+#  nixpkgs.config.packageOverrides = pkgs: {
+#    ansible = pkgsUnstable.ansible;
+#  };
+
+#}
+
 {
 
   # Python is not at /usr/bin/python in NixOS
