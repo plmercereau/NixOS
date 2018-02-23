@@ -67,8 +67,6 @@
     };
     # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-    fileSystems."/".options = [ "acl" ];
-
     kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
@@ -98,6 +96,8 @@
 
     tmpOnTmpfs = true;
   };
+
+  fileSystems."/".options = [ "acl" ];
 
   security.sudo = {
     enable = true;
