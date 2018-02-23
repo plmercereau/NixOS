@@ -67,6 +67,8 @@
     };
     # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+    fileSystems."/".options = [ "acl" ];
+
     kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
