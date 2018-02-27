@@ -32,9 +32,8 @@
   # https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/admin/ansible/2.4.nix
   nixpkgs.config.packageOverrides = super: {
     ansible = super.ansible.overrideAttrs (old: rec {
-      pname = "ansible";
       version = "2.4.2.0";
-      name = "${pname}-${version}";
+      name = "${old.pname}-${version}";
  
       src = super.fetchurl {
         url = "http://releases.ansible.com/ansible/${name}.tar.gz";
