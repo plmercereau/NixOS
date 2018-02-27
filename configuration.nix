@@ -99,6 +99,20 @@
 
   fileSystems."/".options = [ "acl" ];
 
+  zramSwap = {
+    enable = true;
+    memoryPercent = 40;
+  };
+
+  ## WARNING: Don't try to hibernate when you have at least one swap partition with this option enabled!
+  ## We have no way to set the partition into which hibernation image is saved, so if your image ends up on an encrypted one you would lose it!
+  ## WARNING #2: Do not use /dev/disk/by-uuid/… or /dev/disk/by-label/… as your swap device when using randomEncryption
+  ## as the UUIDs and labels will get erased on every boot when the partition is encrypted. Best to use /dev/disk/by-partuuid/…
+  #swapDevices.*.randomEncryption = {
+  #  enable = true;
+  #  cipher = <run cryptsetup benchmark>
+  #};
+
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
