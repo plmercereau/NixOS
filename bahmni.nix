@@ -14,6 +14,7 @@
 
   imports = [
     ./docker.nix
+    ./7zip.nix
   ];
 
   users.extraUsers.bahmni = {
