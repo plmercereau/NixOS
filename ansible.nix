@@ -29,11 +29,21 @@
 {
 
   # Python is not at /usr/bin/python in NixOS
+  # https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/admin/ansible/2.4.nix
   nixpkgs.config.packageOverrides = super: {
-    ansible = super.ansible.overrideAttrs (o: {
+    ansible = super.ansible.overrideAttrs (old: rec {
+      pname = "ansible";
+      version = "2.4.2.0";
+      name = "${pname}-${version}";
+ 
+      src = super.fetchurl {
+        url = "http://releases.ansible.com/ansible/${name}.tar.gz";
+        sha256 = "0n3n9py4s3aykiii31xq8g4wmd6693jvby0424pjrg0bna01apri";
+      };
+
       prePatch = ''
         sed -i "s,/usr/,$out," lib/ansible/constants.py && \
-        find lib/ansible/ -type f -exec sed -i "s,/usr/bin/python,/usr/bin/env python," {} \;
+        find lib/ansible/ -type f -exec sed -i "s,/usr/bin/python,/usr/bin/env python,g" {} \;
       '';
     });
   };
