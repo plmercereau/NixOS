@@ -62,7 +62,7 @@
       # efiSupport = true;
       # efiInstallAsRemovable = true;
       # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-      device = "/dev/sda";
+      device = (import ./settings.nix).grub.device;
       memtest86.enable = true;
     };
     # boot.loader.efi.efiSysMountPoint = "/boot/efi";
