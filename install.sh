@@ -2,7 +2,6 @@
 set -e # stop script on error
 CONFIG_DIRECTORY=/mnt/etc/nixos
 GITHUB_REPO=platyplus/remote-host
-[ -z "$API_ENDPOINT" ] && API_ENDPOINT=https://graphql.platyplus.io
 
 # Set the hard drive
 DEFAULTTGTDEV="/dev/sda"
