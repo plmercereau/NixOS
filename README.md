@@ -3,7 +3,8 @@ NixOS config for servers in the field.
 
 1. [Installing NixOS from scratch](#method-1-installing-nixos-from-scratch)
 2. [Converting an existing Linux system into NixOS](#method-2-converting-an-existing-linux-system-into-nixos)
-3. [Creating an encrypted data partition](#creating-an-encrypted-data-partition)
+3. [Automatic installation](#method-3-automatic-installation)
+4. [Creating an encrypted data partition](#creating-an-encrypted-data-partition)
 
 ## Method 1: Installing NixOS from scratch
 
@@ -191,6 +192,25 @@ To do so, make sure that the private key to log on to the ssh relay is already p
 Reboot and you should end up in a NixOS system! The old contents of the root directory can be found at `/old_root/`.
 
 Now follow [the final steps of the general installation guide](#final-steps-after-booting-the-os).
+
+## Method 3: Automatic installation
+
+### Boot from the NixOS installation image
+https://nixos.org/nixos/download.html
+
+### Install NixOS from the installation script
+```sh
+curl https://raw.githubusercontent.com/MSF-OCB/NixOS/master/install.sh | bash
+```
+Unmout and eject the installation image, then reboot.
+
+### Update to the correct NixOS channel
+Connect to the configured machine, then
+```sh
+sudo nix-channel --list
+sudo nix-channel --add https://nixos.org/channels/nixos-18.03 nixos
+sudo nixos-rebuild switch --upgrade --install-bootloader
+```
 
 ## Creating an encrypted data partition
 

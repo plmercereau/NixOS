@@ -4,17 +4,16 @@
 {
 
   networking = {
-    interfaces.<name> = {
-      name = "<name>";
+    interfaces.{{interface}} = {
+      name = "{{interface}}";
       useDHCP = false;
-      ipv4.addresses = [ { address = "xxx.xxx.xxx.xxx"; prefixLength = 16; } ];
+      ipv4.addresses = [ { address = "{{address}}"; prefixLength = {{16}}; } ];
     };
     defaultGateway = {
-      address = "xxx.xxx.xxx.xxx";
-      interface = "<name>";
+      address = "{{gateway}}";
+      interface = "{{interface}}";
     };
     nameservers = [ "8.8.4.4" "8.8.8.8" ];
   };
 
 }
-
