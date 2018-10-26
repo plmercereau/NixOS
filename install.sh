@@ -57,9 +57,6 @@ cp "$CONFIG_DIRECTORY/settings.nix.template" "$CONFIG_DIRECTORY/settings.nix"
 DEVICEID=`ls -l /dev/disk/by-id/ | grep "${TGTDEV##*/}$" | awk '{print $9}'`
 sed -i -e 's/{{device}}/'"${DEVICEID//\//\\/}"'/g' "$CONFIG_DIRECTORY/settings.nix"
 
-# Install the programms required to run the script
-nix-env -iA nixos.jq
-
 # Set the host name
 DEFAULTHOSTNAME="hostname"
 read -p "Host name (default: $DEFAULTHOSTNAME): " NEWHOSTNAME
